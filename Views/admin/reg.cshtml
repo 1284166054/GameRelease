@@ -1,0 +1,108 @@
+﻿@model 游戏发布站.Models.User
+
+@{
+    //Layout = null;
+}
+
+
+
+
+<div class="register-box">
+    <div class="register-logo">
+        <a href="/">游戏发布站</a>
+    </div>
+
+    <div class="register-box-body">
+        <p class="login-box-msg">新用户注册</p>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", placeholder="用户名" } })
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" placeholder="密码">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" placeholder="重复密码">
+                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+            </div>
+
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" placeholder="手机号">
+                <div style="margin-top:12px;">
+                    <button type="button" class="btn btn-default btn-block btn-flat">获取验证码</button>
+                </div>
+                <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+            </div>
+
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" placeholder="验证码">
+                <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">注 册</button>
+                </div>
+                <!-- /.col -->
+            </div>
+
+        }
+        <div style="margin-top:12px;">
+            <a href="login" class="text-center">已经有账号，这里登录</a>
+        </div>
+    </div>
+    <!-- /.form-box -->
+</div>
+<script>
+    $("body").addClass("hold-transition register-page");
+</script>
+
+@*
+    <div class="form-horizontal col-md-12">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.password1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.password1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.password1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.mobile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.mobile, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.mobile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-2">
+                <input type="submit" value="注册" class="btn btn-default" />
+                &nbsp;
+                <input type="button" value="返回" class="btn btn-default" />
+            </div>
+        </div>
+    </div>*@

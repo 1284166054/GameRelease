@@ -1,0 +1,96 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta name="Referrer" content="origin" />
+    <meta name="Keywords" content="@ViewBag.Keywords" />
+    <meta name="Description" content="@ViewBag.Description" />
+    <link href="/Content/bootstrap.css" rel="stylesheet">
+    <script src="/Scripts/jquery-3.1.1.js"></script>
+    <script src="/Scripts/bootstrap.js"></script>
+    <style>
+        body {
+            @*background-image: linear-gradient(to bottom, #7AFFAF,#7A88FF,#000000);*@
+            background-color: #bfd7ff;
+            font-family: "宋体";
+            FONT-SIZE: 9pt;
+        }
+        table {
+            text-align: center;
+            line-height: 15px !important;
+        }
+
+        .table-bordered th, .table-bordered td {
+            border: 1px solid #006699 !important;
+            FONT-SIZE: 12px !important;
+            LINE-HEIGHT: 23px !important;
+            padding: 2px !important;
+        }
+
+        tr {
+            background-color: rgb(255,255,152);
+            color:#000000;
+        }
+        th {
+            color: #fff;
+            text-align: center;
+            background-image: url(/images/lm.jpg);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="~/images/banner.jpg" alt="Alternate Text" width="100%"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                    <tr>
+                        <th></th>
+                        <th>服务器名</th>
+                        <th>服务器IP</th>
+                        <th>开机时间[月/日/时]</th>
+                        <th>地区线路</th>
+                        <th>版本介绍</th>
+                        <th>客服QQ</th>
+                        <th>游戏主页</th>
+                    </tr>
+
+    
+                    @for (var i = 10; i < 50; i++)
+                    {
+                <tr>
+                    <td width="15px"><img src="~/images/4.gif" /></td>
+                    <td width="13%">·０充·沉默专属</td>
+                    <td width="13%">·最火专属·一区</td>
+                    <td width="18%">3月/3日/14点/30分开放</td>
+                    <td width="10%">█装备保值█</td>
+                    <td>所有地图刷充值BOSS█免费顶赞◆上线送-推荐</td>
+                    <td width="10%">秒捡物秒回收</td>
+                    <td width="8%">点击查看</td>
+                </tr>
+                    }
+                </table>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="text-align:center">
+                <div>友情链接 | 联系本站 | 设为首页 | 收藏本站 | 流量统计 | 站长统计</div>
+                <div>本站严厉打击赌博色情违法犯罪广告，接受广大用户举报，举报邮箱：szjfxj@126.com</div>
+                <div>侵权举报：本页面所涉内容为用户发表并上传，相应的法律责任由用户自行承担；本网站仅提供存储服务；如存在侵权问题，请权利人与本网站联系删除！</div>
+                <div>Copyright © 2019-2020 《JJJ新开传奇》 WWW.JJJ.COM</div>
+                <div>粤ICP备15103637号  公安部备案号：44030402003563</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
