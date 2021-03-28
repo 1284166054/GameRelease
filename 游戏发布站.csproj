@@ -313,6 +313,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\layer.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -383,6 +384,12 @@
     <Content Include="Scripts\src\utils\setupEventListeners.js" />
     <Content Include="Scripts\tether.js" />
     <Content Include="Scripts\tether.min.js" />
+    <Content Include="Scripts\theme\default\icon-ext.png" />
+    <Content Include="Scripts\theme\default\icon.png" />
+    <Content Include="Scripts\theme\default\layer.css" />
+    <Content Include="Scripts\theme\default\loading-0.gif" />
+    <Content Include="Scripts\theme\default\loading-1.gif" />
+    <Content Include="Scripts\theme\default\loading-2.gif" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -412,6 +419,7 @@
     <Content Include="Views\admin\index.cshtml" />
     <Content Include="Views\admin\reg.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\admin\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

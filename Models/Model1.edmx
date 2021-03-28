@@ -41,7 +41,7 @@
             <PropertyRef Name="name" />
           </Key>
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="value" Type="varchar" MaxLength="50" />
+          <Property Name="value" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="GameList">
           <Key>
@@ -63,13 +63,13 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="50" />
-          <Property Name="balance" Type="nchar" MaxLength="10" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="balance" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Creation_time" Type="varchar" MaxLength="50" />
           <Property Name="Login_time" Type="varchar" MaxLength="50" />
-          <Property Name="Login_nums" Type="nchar" MaxLength="10" />
+          <Property Name="Login_nums" Type="int" />
         </EntityType>
         <EntityContainer Name="gameModelStoreContainer">
           <EntitySet Name="AdType" EntityType="Self.AdType" Schema="dbo" store:Type="Tables" />
@@ -78,26 +78,26 @@
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdList" EntityType="Self.AdList" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-[AdList].[id] AS [id], 
-[AdList].[type] AS [type], 
-[AdList].[name] AS [name], 
-[AdList].[ip] AS [ip], 
-[AdList].[time] AS [time], 
-[AdList].[line] AS [line], 
-[AdList].[introduce] AS [introduce], 
-[AdList].[QQ] AS [QQ], 
-[AdList].[web] AS [web], 
-[AdList].[Creation_time] AS [Creation_time], 
-[AdList].[uid] AS [uid], 
-[AdList].[count] AS [count], 
-[AdList].[money] AS [money]
-FROM [dbo].[AdList] AS [AdList]</DefiningQuery>
+    [AdList].[id] AS [id], 
+    [AdList].[type] AS [type], 
+    [AdList].[name] AS [name], 
+    [AdList].[ip] AS [ip], 
+    [AdList].[time] AS [time], 
+    [AdList].[line] AS [line], 
+    [AdList].[introduce] AS [introduce], 
+    [AdList].[QQ] AS [QQ], 
+    [AdList].[web] AS [web], 
+    [AdList].[Creation_time] AS [Creation_time], 
+    [AdList].[uid] AS [uid], 
+    [AdList].[count] AS [count], 
+    [AdList].[money] AS [money]
+    FROM [dbo].[AdList] AS [AdList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Config" EntityType="Self.Config" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-[Config].[name] AS [name], 
-[Config].[value] AS [value]
-FROM [dbo].[Config] AS [Config]</DefiningQuery>
+    [Config].[name] AS [name], 
+    [Config].[value] AS [value]
+    FROM [dbo].[Config] AS [Config]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
       </Schema>
@@ -134,13 +134,13 @@ FROM [dbo].[Config] AS [Config]</DefiningQuery>
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="balance" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="balance" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Creation_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Login_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Login_nums" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Login_nums" Type="Int32" />
         </EntityType>
         <EntityType Name="AdList">
           <Key>
@@ -165,7 +165,7 @@ FROM [dbo].[Config] AS [Config]</DefiningQuery>
             <PropertyRef Name="name" />
           </Key>
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="value" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="gameEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdType" EntityType="Self.AdType" />
@@ -265,7 +265,7 @@ FROM [dbo].[Config] AS [Config]</DefiningQuery>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
       </DesignerInfoPropertySet>
     </Options>

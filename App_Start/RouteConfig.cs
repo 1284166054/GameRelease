@@ -12,17 +12,19 @@ namespace 游戏发布站
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
 
 
+            routes.MapRoute(
+               name: "dashboard",
+               url: "dashboard/{id}",
+               defaults: new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
+          );
 
             routes.MapRoute(
                 name: "Reg",
                 url: "Reg/{id}",
                 defaults: new { controller = "Admin", action = "Reg", id = UrlParameter.Optional }
            );
-
-
 
             routes.MapRoute(
                 name: "Login",
