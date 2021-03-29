@@ -8,6 +8,7 @@ namespace 游戏发布站
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new Filter.GlobalAuthorizeAttribute());
         }
     }
 }

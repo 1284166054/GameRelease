@@ -8,6 +8,7 @@ namespace 游戏发布站.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
             var GameDB = new gameEntities();
@@ -15,6 +16,10 @@ namespace 游戏发布站.Controllers
             ViewBag.Keywords = GameDB.Config.Where(s => s.name == "Keywords").ToList()[0].value;
             ViewBag.Description = GameDB.Config.Where(s => s.name == "Description").ToList()[0].value;
             ViewBag.list = GameDB.AdList;
+            return View();
+        }
+        public ActionResult Verification()
+        {
             return View();
         }
 

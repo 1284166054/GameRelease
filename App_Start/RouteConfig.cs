@@ -15,6 +15,12 @@ namespace 游戏发布站
 
 
             routes.MapRoute(
+               name: "seting",
+               url: "seting/{id}",
+               defaults: new { controller = "Admin", action = "seting", id = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
                name: "dashboard",
                url: "dashboard/{id}",
                defaults: new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
@@ -33,10 +39,24 @@ namespace 游戏发布站
            );
 
             routes.MapRoute(
+                name: "Logout",
+                url: "Logout/{id}",
+                defaults: new { controller = "Admin", action = "Logout", id = UrlParameter.Optional }
+           );
+
+
+            routes.MapRoute(
+                name: "Verification",
+                url: "Verification/{id}",
+                defaults: new { controller = "Home", action = "Verification", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
                 );
+
         }
     }
 }
