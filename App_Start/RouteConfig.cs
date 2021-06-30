@@ -32,6 +32,12 @@ namespace 游戏发布站
                 defaults: new { controller = "Admin", action = "Reg", id = UrlParameter.Optional }
            );
 
+
+            routes.MapRoute(
+                name: "UserList",
+                url: "UserList/{id}",
+                defaults: new { controller = "Admin", action = "UserList", id = UrlParameter.Optional }
+            );
             routes.MapRoute(
                 name: "Login",
                 url: "Login/{id}",
@@ -44,12 +50,45 @@ namespace 游戏发布站
                 defaults: new { controller = "Admin", action = "Logout", id = UrlParameter.Optional }
            );
 
+            routes.MapRoute(
+                name: "paylog",
+                url: "paylog/{id}",
+                defaults: new { controller = "Admin", action = "paylog", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+                name: "userlog",
+                url: "userlog/{id}",
+                defaults: new { controller = "Admin", action = "userlog", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+                name: "zzlog",
+                url: "zzlog/{id}",
+                defaults: new { controller = "Admin", action = "zzlog", id = UrlParameter.Optional }
+           );
+
+
+            routes.MapRoute(
+                name: "pay",
+                url: "pay/{id}",
+                defaults: new { controller = "Admin", action = "pay", id = UrlParameter.Optional }
+           );
+
+
+
+            routes.MapRoute(
+                name: "changepass",
+                url: "changepass/{id}",
+                defaults: new { controller = "Admin", action = "changepass", id = UrlParameter.Optional }
+           );
 
             routes.MapRoute(
                 name: "Verification",
                 url: "Verification/{id}",
                 defaults: new { controller = "Home", action = "Verification", id = UrlParameter.Optional }
            );
+
 
             routes.MapRoute(
                 name: "Default",

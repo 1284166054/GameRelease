@@ -24,7 +24,11 @@ namespace 游戏发布站.Filter
             if (Action_name != "Verification")
             {
                 //filterContext.HttpContext.Response.Write("控制器：" + Controller_name + "<br/>");
-                if (Server_Name != "localhost")
+                string[] Web_Url = {
+                    "localhost" ,
+                    "fbw.zhao321.com" ,
+                };
+                if (Array.IndexOf(Web_Url,Server_Name) == -1)
                 {
                     filterContext.Result = new RedirectResult("/Verification");
                 }
@@ -33,7 +37,7 @@ namespace 游戏发布站.Filter
             //filterContext.HttpContext.Response.Write("Action：" + Action_name + "<br/>");
             //filterContext.HttpContext.Response.Write(HttpContext.Current.Session["uid"]);
             //filterContext.Result = new RedirectResult("/Login");
-            //base.OnAuthorization(filterContext);
+           
 
         }
 

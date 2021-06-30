@@ -44,8 +44,6 @@ namespace 游戏发布站.Controllers
             }
             else
             {
-                //var GameDB = new gameEntities();
-                //ViewBag.UserInfo = GameDB.User.Find(Session["uid"]);
                 return View();
             }
 
@@ -84,7 +82,7 @@ namespace 游戏发布站.Controllers
                     Session["uid"] = UserInfo[0].id;
                     //return RedirectToAction("Index");
                     UserInfo[0].Login_nums += 1;
-                    UserInfo[0].Login_time = Convert.ToString((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000);
+                    UserInfo[0].Login_time = DateTime.Now.ToLocalTime().ToString();
                     GameDB.SaveChanges();
                     return Redirect("Dashboard");
                 }
@@ -118,20 +116,15 @@ namespace 游戏发布站.Controllers
             }
             else
             {
-                long Ctimg = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000;
+
                 User.password = Md5String(User.password);
                 User.balance = 0;
-                User.Creation_time = Convert.ToString(Ctimg);
+                User.Creation_time = DateTime.Now.ToLocalTime().ToString();
                 User.Login_nums = 0;
                 User.Login_time = "0";
                 GameDB.User.Add(User);
                 if (GameDB.SaveChanges() != 0)
                 {
-                    // return Json(new { code = 1, msg = "账号注册成功" });
-                    //return View("Login");
-                    //Response.Cookies.Add(new HttpCookie("username"){ Value = User.username,Expires = DateTime.Now.AddDays(1) });
-                    //Response.Cookies.Add(new HttpCookie("password") { Value = User.password,Expires = DateTime.Now.AddDays(1) });
-                    //return RedirectToAction("Login");
                     ViewBag.regok = "ok";
                     return View();
                 }
@@ -155,22 +148,97 @@ namespace 游戏发布站.Controllers
         {
 
             var GameDB = new gameEntities();
-            ViewBag.Title = GameDB.Config.Where(s => s.name == "title").ToList()[0].value;
-            ViewBag.Keywords = GameDB.Config.Where(s => s.name == "Keywords").ToList()[0].value;
-            ViewBag.Description = GameDB.Config.Where(s => s.name == "Description").ToList()[0].value;
+            foreach (var item in GameDB.Config.ToList())
+            {
+                ViewData[item.name] = item.value;
+            }
             return View();
         }
 
         [HttpPost]
-        public ActionResult Seting(Config Config)
+        public ActionResult Seting(FormCollection Form)
         {
 
-            //var GameDB = new gameEntities();
-            //ViewBag.Title = GameDB.Config.Where(s => s.name == "title").ToList()[0].value;
-            //ViewBag.Keywords = GameDB.Config.Where(s => s.name == "Keywords").ToList()[0].value;
-            //ViewBag.Description = GameDB.Config.Where(s => s.name == "Description").ToList()[0].value;
+            var GameDB = new gameEntities();
+            var Title = new List<Config>();
+            foreach (string item in Form)
+            {
+                Title = GameDB.Config.Where(s => s.name == item).ToList();
+                Title[0].value = Form[item];
+            }
+            GameDB.SaveChanges();
+
+
+            foreach (var item in GameDB.Config.ToList())
+            {
+                ViewData[item.name] = item.value;
+            }
+
+            ViewBag.regok = "ok";
             return View();
         }
+
+        public ActionResult UserList()
+        {
+
+            var GameDB = new gameEntities();
+            var user_list = GameDB.User.ToList();
+            ViewBag.user_list = user_list;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult pay(FormCollection Form)
+        {
+
+            var GameDB = new gameEntities();
+            int id = int.Parse(Form["id"]);
+            var user_info = GameDB.User.Find(id);
+            user_info.balance = user_info.balance + int.Parse(Form["mun"]);
+
+            var PayLog = new PayLog();
+            PayLog.uid = id;
+            PayLog.amount = int.Parse(Form["mun"]);
+            PayLog.username = user_info.username;
+            PayLog.total = user_info.balance;
+            PayLog.type = "管理员操作";
+            PayLog.Creation_time = DateTime.Now.ToLocalTime().ToString();
+            GameDB.PayLog.Add(PayLog);
+            GameDB.SaveChanges();
+
+            return Json(new { balance = user_info.balance,msg = 0 }, JsonRequestBehavior.AllowGet);;;
+        }
+
+        [HttpPost]
+        public ActionResult changepass(FormCollection Form)
+        {
+            var GameDB = new gameEntities();
+            int id = int.Parse(Form["id"]);
+            var user_info = GameDB.User.Find(id);
+            user_info.password = Md5String(Form["pass"]);
+            GameDB.SaveChanges();
+            return Json(new { msg = 0 }, JsonRequestBehavior.AllowGet); ; ;
+        }
+
+
+        public ActionResult userlog()
+        {
+            var GameDB = new gameEntities();
+            var Userlog = GameDB.Userlog.ToList();
+            ViewBag.Userlog = Userlog;
+            return View();
+        }
+
+
+        public ActionResult paylog()
+        {
+
+            var GameDB = new gameEntities();
+            var paylog = GameDB.PayLog.ToList();
+            ViewBag.paylog = paylog;
+            return View();
+        }
+
 
     }
 }

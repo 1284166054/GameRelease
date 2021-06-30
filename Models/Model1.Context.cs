@@ -31,5 +31,8 @@ namespace 游戏发布站.Models
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<AdList> AdList { get; set; }
         public virtual DbSet<Config> Config { get; set; }
+        public virtual DbSet<PayLog> PayLog { get; set; }
+        public virtual DbSet<ZZlog> ZZlog { get; set; }
+        public virtual DbSet<Userlog> Userlog { get; set; }
     }
 }

@@ -3,7 +3,24 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<style>
+    .bg-primary {
+        background-color: #337ab7;
+    }
 
+    .bg-success {
+        background-color: #5cb85c;
+    }
+    .bg-info {
+        background-color: #5bc0de;
+    }
+    .bg-warning {
+        background-color: #f0ad4e;
+    }
+    .bg-danger {
+        background-color: #d9534f;
+    }
+</style>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -18,8 +35,123 @@
     <section class="content">
         <!-- Info boxes -->
         <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3><font><font>150</font></font></h3>
 
+                        <p><font><font>广告总数量</font></font></p>
+                    </div>
+                    <div class="icon">
+                        <i class="icon ion-arrow-graph-up-right"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3><font><font>53</font></font><sup style="font-size: 20px"><font><font>%</font></font></sup></h3>
+
+                        <p><font><font>今日广告数量</font></font></p>
+                    </div>
+                    <div class="icon">
+                        <i class="icon ion-podium"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3><font><font>44</font></font></h3>
+
+                        <p><font><font>用户数量</font></font></p>
+                    </div>
+                    <div class="icon">
+                        <i class="icon ion-person-stalker"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3><font><font>65</font></font></h3>
+
+                        <p><font><font>余额总数</font></font></p>
+                    </div>
+                    <div class="icon">
+                        <i class="icon ion-card"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
         </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3><font><font>150</font></font></h3>
+
+                        <p><font><font>今日充值</font></font></p>
+                    </div>
+                    <div class="icon">
+                        <i class="icon ion-ios-cart"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3><font><font>53 </font></font><sup style="font-size: 20px"><font><font>%</font></font></sup></h3>
+
+                        <p><font><font>待审核数量</font></font></p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3><font><font>44</font></font></h3>
+
+                        <p><font><font>今日注册</font></font></p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3><font><font>65</font></font></h3>
+
+                        <p><font><font>今日消费</font></font></p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+
     </section>
     <!-- /.content -->
 </div>

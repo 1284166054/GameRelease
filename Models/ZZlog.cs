@@ -12,15 +12,13 @@ namespace 游戏发布站.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class ZZlog
     {
         public int id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public decimal balance { get; set; }
+        public int uid { get; set; }
+        public decimal amount { get; set; }
+        public decimal total { get; set; }
         public string Creation_time { get; set; }
-        public string Login_time { get; set; }
-        public int Login_nums { get; set; }
-        public int freeze { get; set; }
+        public string username { get; set; }
     }
 }

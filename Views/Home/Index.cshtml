@@ -18,6 +18,8 @@
             background-color: #bfd7ff;
             font-family: "宋体";
             FONT-SIZE: 9pt;
+            min-width: 1024px;
+            max-width: 100%;
         }
         table {
             text-align: center;
@@ -41,13 +43,24 @@
             background-image: url(/images/lm.jpg);
             font-weight: bold;
         }
+        .top {
+            position: absolute;
+            float:right;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <img src="~/images/banner.jpg" alt="Alternate Text" width="100%"/>
+                <div class="top">
+                    <a class="btn btn-success btn-sm" href="login">自助发布广告</a>
+                       @*
+                    <a class="btn btn-success btn-sm" href="login">登录</a>
+                    <a class="btn btn-success btn-sm" href="reg">注册</a>
+                        *@
+                </div>
+                <img src="~/images/banner.jpg" alt="Alternate Text" style="width:100%" />
             </div>
         </div>
         <div class="row">

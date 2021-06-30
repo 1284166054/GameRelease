@@ -1,8 +1,4 @@
-﻿@{ 
-        ViewBag.UserInfo.Creation_time = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddSeconds(long.Parse(ViewBag.UserInfo.Creation_time)).ToString("G");
-        ViewBag.UserInfo.Login_time = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddSeconds(long.Parse(ViewBag.UserInfo.Login_time)).ToString("G");
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -13,7 +9,39 @@
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.staticfile.org/ionicons/2.0.1/css/ionicons.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/layer")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/adminlte")
+    @RenderSection("scripts", required: false)
 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
+    <!-- Latest compiled and minified Locales -->
+    <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $('.sidebar-menu a').each(function () {
+                if (this.href === window.location.href) {
+                    $(this).parent().addClass('active')
+                        .closest('.treeview-menu').addClass('.menu-open')
+                        .closest('.treeview').addClass('active');
+                }
+            });
+            $('.sidebar-menu li:not(.treeview) > a').click(function () {
+                var $parent = $(this).parent().addClass('active');
+                $parent.siblings('.treeview.active').find('> a').trigger('click');
+                $parent.siblings().removeClass('active').find('li').removeClass('active');
+            });
+
+        })
+
+    </script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -96,26 +124,58 @@
                     <li class="header">功能菜单</li>
 
 
-                    <li class="active treeview menu-open">
+                    <li>
                         <a href="Dashboard">
                             <i class="fa fa-dashboard"></i> <span>首页面板</span>
                         </a>
                     </li>
 
 
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-files-o"></i>
-                            <span>基本功能</span>
-                            <span class="pull-right-container"></span>
+                    @* 
+                       <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-files-o"></i>
+                                <span>基本功能</span>
+                                <span class="pull-right-container"></span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="Dashboard"><i class="fa fa-circle-o"></i>功能一</a></li>
+                                <li><a href="Dashboard"><i class="fa fa-circle-o"></i>功能二</a></li>
+                                <li><a href="Dashboard"><i class="fa fa-circle-o"></i>功能三</a></li>
+                                <li><a href="Dashboard"><i class="fa fa-circle-o"></i>功能四</a></li>
+                            </ul>
+                        </li>
+
+                    *@
+
+                    
+
+                    <li>
+                        <a href="UserList">
+                            <i class="fa fa-gear"></i> <span>用户列表</span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i>功能一</a></li>
-                            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i>功能二</a></li>
-                            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i>功能三</a></li>
-                            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i>功能四</a></li>
-                        </ul>
                     </li>
+
+
+                    <li>
+                        <a href="AdList">
+                            <i class="fa fa-gear"></i> <span>广告列表</span>
+                        </a>
+                    </li>
+
+
+                       <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-files-o"></i>
+                                <span>记录管理</span>
+                                <span class="pull-right-container"></span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="paylog"><i class="fa fa-circle-o"></i>充值记录</a></li>
+                                <li><a href="userlog"><i class="fa fa-circle-o"></i>用户记录</a></li>
+                                @*<li><a href="zzlog"><i class="fa fa-circle-o"></i>转账记录</a></li>*@
+                            </ul>
+                        </li>
 
                     <li>
                         <a href="Seting">
@@ -141,10 +201,5 @@
         <div class="control-sidebar-bg"></div>
 
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/adminlte")
-    @Scripts.Render("~/bundles/dashboard")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

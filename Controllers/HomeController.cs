@@ -12,10 +12,17 @@ namespace 游戏发布站.Controllers
         public ActionResult Index()
         {
             var GameDB = new gameEntities();
-            ViewBag.Title = GameDB.Config.Where(s => s.name == "title").ToList()[0].value;
-            ViewBag.Keywords = GameDB.Config.Where(s => s.name == "Keywords").ToList()[0].value;
-            ViewBag.Description = GameDB.Config.Where(s => s.name == "Description").ToList()[0].value;
+            foreach (var item in GameDB.Config.ToList())
+            {
+                ViewData[item.name] = item.value;
+            }
             ViewBag.list = GameDB.AdList;
+            if (ViewData["type"].ToString() == "0")
+            {
+                //return new HttpNotFoundResult("此网站暂时关闭");
+                return Content("此网站暂时关闭");
+            }
+
             return View();
         }
         public ActionResult Verification()

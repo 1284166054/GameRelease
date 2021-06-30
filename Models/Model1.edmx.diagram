@@ -10,7 +10,10 @@
         <EntityTypeShape EntityType="gameModel.Navigation" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="gameModel.User" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="gameModel.AdList" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="gameModel.Config" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gameModel.Config" Width="1.5" PointX="5.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gameModel.PayLog" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="gameModel.ZZlog" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="gameModel.Userlog" Width="1.5" PointX="10.5" PointY="1.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

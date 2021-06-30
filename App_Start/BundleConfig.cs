@@ -28,6 +28,7 @@ namespace 游戏发布站
             bundles.Add(new ScriptBundle("~/bundles/dashboard").Include("~/admin-lte/js/pages/dashboard2.js"));
 
 
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/admin-lte/css/AdminLTE.min.css",

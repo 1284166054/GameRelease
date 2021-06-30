@@ -1,0 +1,139 @@
+﻿@model 游戏发布站.Models.User
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>用户列表</h1>
+        <ol class="breadcrumb">
+            <li><a href="Dashboard"><i class="fa fa-dashboard"></i>首页</a></li>
+            <li class="active">用户列表</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Info boxes -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th width="5%"><font><font>序号</font></font></th>
+                                    <th width="10%"><font><font>用户名</font></font></th>
+                                    <th width="10%"><font><font>余额</font></font></th>
+                                    <th width="15%"><font><font>注册时间</font></font></th>
+                                    <th width="10%"><font><font>状态</font></font></th>
+                                    <th width="15%"><font><font>最后登录时间</font></font></th>
+                                    <th width="15%"><font><font>登录次数</font></font></th>
+                                    <th width="15%"><font><font>操作</font></font></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.user_list)
+                                {
+
+                                    <tr id="user_info_@item.id">
+                                        <td>@item.id</td>
+                                        <td>@item.username</td>
+                                        <td> <span class="badge bg-danger">@item.balance</span></td>
+                                        <td>@item.Creation_time</td>
+                                        @if (@item.freeze == 0)
+                                        {
+                                            <td><button onclick="freeze(@item.id)" type="button" class="btn btn-success btn-xs">正常</button></td>
+                                        }
+                                        else
+                                        {
+
+                                            <td><button onclick="freeze(@item.id)" type="button" class="btn btn-danger btn-xs">禁用</button></td>
+
+                                        }
+
+
+                                        <td>@item.Login_time</td>
+                                        <td>@item.Login_nums</td>
+                                        <td>
+                                            <button  onclick="pay(@item.id)"  type="button" class="btn btn-success btn-xs">充值</button>
+                                            <button  onclick="pass(@item.id)" type="button" class="btn btn-success btn-xs">修改</button>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+
+<script>
+    $(document).ready(function() {
+
+        $("table").bootstrapTable({
+            search: true,
+            pagination: true,
+            pageSize: 20,
+            pageList: [5, 10, 15],
+            showColumns: true,
+            showRefresh: true,
+            locale: "zh-CN",
+            striped: true,
+            theadClasses: undefined
+        });
+
+    })
+
+
+    function freeze(id) {
+        console.log(id)
+
+    }
+
+    function pass(id) {
+        layer.prompt(
+            { title: '输入要更改的密码', formType: 0 },
+            function (value, index) {
+                $.post("/changepass", { id: id, pass: value }, function (result) {
+                    if (result.msg == 0) {
+                        layer.alert("密码修改成功");
+                    }
+                });
+
+                layer.close(index);
+            });
+
+    }
+    function pay(id) {
+        //prompt层
+        layer.prompt(
+            { title: '输入充值金额', formType: 0},
+            function (value, index) {
+
+                if (parseInt(value) == '') {
+
+                    layer.alert("请输入数字");
+                    return false;
+                }
+                $.post("/pay", { id: id, mun: parseInt(value) }, function (result) {
+                    if (result.msg == 0) {
+                        var tr_id = "#user_info_" + id + " td:eq(2) span";
+                        $(tr_id).text(result.balance.toFixed(2));
+                        layer.alert("用户充值成功");
+                    }
+                });
+                
+                layer.close(index);
+        });
+    }
+
+</script>
